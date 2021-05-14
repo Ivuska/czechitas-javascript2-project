@@ -65,11 +65,6 @@ for(let i = daysStart; i <= daysNumber; i ++) {
     divForDay.classList.add('main-content__day');
     mainContent.appendChild(divForDay);
     divForDay.innerText = i;
-}*/
-
-const sectionContent = document.querySelector('section.main-content');
-for (let i = 0; i < 30; i++) {
-    sectionContent.appendChild(new NewDay(i));
 }
 
 
