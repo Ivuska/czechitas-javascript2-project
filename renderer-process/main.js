@@ -65,12 +65,23 @@ for(let i = daysStart; i <= daysNumber; i ++) {
     divForDay.classList.add('main-content__day');
     mainContent.appendChild(divForDay);
     divForDay.innerText = i;
+}*/
+
+const sectionContent = document.querySelector('section.main-content');
+for (let i = 0; i < 30; i++) {
+    sectionContent.appendChild(new NewDay(i));
 }
 
 
+
+
+
+///==============================================================================================================================
+///LEKCE 6.5. 2021
 const text = 'asfhdh';
 const cislo = 3;
 
+///OBJEKT
 const automobil = {
     pocetMistKSezeni: 5,
     barvaKaroserie: 'cervena'
@@ -78,35 +89,44 @@ const automobil = {
 
 console.log(automobil.barvaKaroserie);
 
+///DEKLARACE TRIDY
 class Operenec {
-
     constructor(volani) {
-        this.zvuk = volani;
+        this.zvuk = volani; ///v podstate promenna pro tu tridu
     }
 
     vydejZvuk() {
         console.log(this.zvuk);
     }
+
 }
 
-class Kacer extends Operenec {
+///INSTANCE TRIDY
+/// to, co ma v zavorkach nam umoznuje nadefinovat nejaky stav ktery si v sobe bude ta trida drzet
+///kacer i kohout jsou dve nove hodnoty, instance, ktere o sobe nevedi, ale maji nejake spolecne vlastnosti
+
+class Kacer extends Operenec{
+
     plavPoJezirku() {
-        console.log('plavu');
-    } 
+        console.log('plaaavat, plaaavat, plaaavat');
+    }
+
 }
 
 class Kohout extends Operenec{
+ 
     hlasiVychodSlunce() {
         console.log('vychazi');
-    } 
+    }
+
 }
 
 const kacer = new Kacer('kva kva');
 kacer.vydejZvuk();
+kacer.plavPoJezirku();
 
-const kohout = new Kohout('kyryky');
+
+const kohout = new Kohout('kikiriki');
 kohout.vydejZvuk();
-
-
-
-
+kohout.hlasiVychodSlunce();
+///==================================================================================================================
