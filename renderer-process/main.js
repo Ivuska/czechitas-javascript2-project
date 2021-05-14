@@ -1,4 +1,6 @@
+import { NewsArticle } from './components/news-article/news-article.js';
 import { Carousel } from './components/carousel/carousel.js';
+import { NewDay } from './components/day/day.js';
 
 const carousel = new Carousel;
 
@@ -8,6 +10,7 @@ fetch('http://localhost:3000/news.json')
         const data = JSON.parse(responseText);
         carousel.populateNewsCarousel(data.articles);
     });
+
 
 const mainContent = document.querySelector('.main-content')
 
