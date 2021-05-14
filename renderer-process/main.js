@@ -9,31 +9,13 @@ fetch('http://localhost:3000/news.json')
     .then(responseText => {
         const data = JSON.parse(responseText);
         carousel.populateNewsCarousel(data.articles);
-    });
-
-
-/*    
-const mainContent = document.querySelector('.main-content')
-
-const daysNumber = 31;
-const daysStart = 1;
-
-for(let i = daysStart; i <= daysNumber; i ++) {
-    const dayDate = daysNumber[i];
-    const divForDay = document.createElement('div');
-    divForDay.classList.add('main-content__day');
-    mainContent.appendChild(divForDay);
-    divForDay.innerText = i;
-}
-*/
+    })
 
 const sectionContent = document.querySelector('section.main-content');
 for (let i = 0; i < 30; i++) {
     sectionContent.appendChild(new NewDay(i));
 }
  
-
-
 
 ///==============================================================================================================================
 ///LEKCE 6.5. 2021
@@ -60,10 +42,7 @@ class Operenec {
 
 }
 
-///INSTANCE TRIDY
-/// to, co ma v zavorkach nam umoznuje nadefinovat nejaky stav ktery si v sobe bude ta trida drzet
-///kacer i kohout jsou dve nove hodnoty, instance, ktere o sobe nevedi, ale maji nejake spolecne vlastnosti
-
+//Podtrida (sub-class - dedi z Operence)
 class Kacer extends Operenec{
 
     plavPoJezirku() {
@@ -79,6 +58,10 @@ class Kohout extends Operenec{
     }
 
 }
+
+///INSTANCE TRIDY
+/// to, co ma v zavorkach nam umoznuje nadefinovat nejaky stav ktery si v sobe bude ta trida drzet
+///kacer i kohout jsou dve nove hodnoty, instance, ktere o sobe nevedi, ale maji nejake spolecne vlastnosti
 
 const kacer = new Kacer('kva kva');
 kacer.vydejZvuk();
