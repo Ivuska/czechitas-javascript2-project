@@ -1,59 +1,15 @@
 import { NewsArticle } from './components/news-article/news-article.js';
+import { Carousel } from './components/carousel/carousel.js';
 
-const header = document.querySelector('header.header-news > div.header-news__container');
-
-const carouselItemCount = 2;
-let carouselItemStart = 0;
-let articles;
+const carousel = new Carousel;
 
 fetch('http://localhost:3000/news.json')
     .then(serverResponse => serverResponse.text())
     .then(responseText => {
         const data = JSON.parse(responseText);
-        articles = data.articles;
-        populateNewsCarousel(data.articles, 0);
+        carousel.populateNewsCarousel(data.articles);
     });
 
- // domaci ukol c.2   
-function checkButtonsVisibility() {
-    if (carouselItemStart === 0) { 
-        buttonLeft.hidden = true;
-    }
-    else { 
-        buttonLeft.hidden = false;
-    }
-    if (carouselItemStart >= (articles.length - carouselItemCount)) {
-        buttonRight.hidden = true;
-    } else {
-        buttonRight.hidden = false;
-    }
-}
-
-function populateNewsCarousel(news, startAt) {
-    header.innerText = '';
-    for(let i = startAt; i < startAt + carouselItemCount; i ++) {
-        const newsValue = news[i];
-        const newsDiv = new NewsArticle().createDivForNews(newsValue);
-        header.appendChild(newsDiv);
-    }
-    checkButtonsVisibility(); //domaci ukol c.2
-  }
-
-const buttonLeft = document.querySelector('#carousel-button-left')
-
-const buttonRight= document.querySelector('#carousel-button-right')
-
-buttonLeft.addEventListener('click', () => {
-    carouselItemStart --;
-    populateNewsCarousel(articles, carouselItemStart);
-})
-
-buttonRight.addEventListener('click', () => {
-    carouselItemStart ++;
-    populateNewsCarousel(articles, carouselItemStart);
-})
-
-// Domaci ukol cislo 1
 const mainContent = document.querySelector('.main-content')
 
 const daysNumber = 31;
