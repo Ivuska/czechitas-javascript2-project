@@ -1,4 +1,6 @@
 import { NewsArticle } from './components/news-article/news-article.js';
+import { Carousel } from './components/carousel/carousel.js';
+import { NewDay } from './components/day/day.js';
 
 const header = document.querySelector('header.header-news > div.header-news__container');
 
@@ -13,8 +15,7 @@ fetch('http://localhost:3000/news.json')
         articles = data.articles;
         populateNewsCarousel(data.articles, 0);
     });
-
- // domaci ukol c.2   
+  
 function checkButtonsVisibility() {
     if (carouselItemStart === 0) { 
         buttonLeft.hidden = true;
@@ -33,8 +34,8 @@ function populateNewsCarousel(news, startAt) {
     header.innerText = '';
     for(let i = startAt; i < startAt + carouselItemCount; i ++) {
         const newsValue = news[i];
-        const newsDiv = new NewsArticle().createDivForNews(newsValue);
-        header.appendChild(newsDiv);
+        const newsArticle = new NewsArticle(newsValue);
+        header.appendChild(newsArticle);
     }
     checkButtonsVisibility(); //domaci ukol c.2
   }
@@ -53,7 +54,7 @@ buttonRight.addEventListener('click', () => {
     populateNewsCarousel(articles, carouselItemStart);
 })
 
-// Domaci ukol cislo 1
+/* Domaci ukol cislo 1
 const mainContent = document.querySelector('.main-content')
 
 const daysNumber = 31;
