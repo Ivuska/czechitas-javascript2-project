@@ -12,6 +12,7 @@ fetch('http://localhost:3000/news.json')
     });
 
 
+/*    
 const mainContent = document.querySelector('.main-content')
 
 const daysNumber = 31;
@@ -24,8 +25,13 @@ for(let i = daysStart; i <= daysNumber; i ++) {
     mainContent.appendChild(divForDay);
     divForDay.innerText = i;
 }
+*/
 
-
+const sectionContent = document.querySelector('section.main-content');
+for (let i = 0; i < 30; i++) {
+    sectionContent.appendChild(new NewDay(i));
+}
+ 
 
 
 

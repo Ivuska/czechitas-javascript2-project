@@ -23,9 +23,8 @@ export class Carousel {
         this.header.innerText = '';
         for(let i = this.carouselItemStart; i < this.carouselItemStart + this.carouselItemCount; i ++) {
             const newsValue = news[i];
-            const newsArticle = new NewsArticle();
-            const newsDiv = newsArticle.createDivForNews(newsValue);
-            this.header.appendChild(newsDiv);
+            const newsArticle = new NewsArticle(newsValue);
+            this.header.appendChild(newsArticle);
         }
         this.checkButtonsVisibility(); 
       }
