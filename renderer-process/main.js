@@ -1,6 +1,4 @@
 import { NewsArticle } from './components/news-article/news-article.js';
-import { Carousel } from './components/carousel/carousel.js';
-import { NewDay } from './components/day/day.js';
 
 const header = document.querySelector('header.header-news > div.header-news__container');
 
@@ -15,7 +13,8 @@ fetch('http://localhost:3000/news.json')
         articles = data.articles;
         populateNewsCarousel(data.articles, 0);
     });
-  
+
+ // domaci ukol c.2   
 function checkButtonsVisibility() {
     if (carouselItemStart === 0) { 
         buttonLeft.hidden = true;
@@ -34,8 +33,8 @@ function populateNewsCarousel(news, startAt) {
     header.innerText = '';
     for(let i = startAt; i < startAt + carouselItemCount; i ++) {
         const newsValue = news[i];
-        const newsArticle = new NewsArticle(newsValue);
-        header.appendChild(newsArticle);
+        const newsDiv = new NewsArticle().createDivForNews(newsValue);
+        header.appendChild(newsDiv);
     }
     checkButtonsVisibility(); //domaci ukol c.2
   }
@@ -54,7 +53,7 @@ buttonRight.addEventListener('click', () => {
     populateNewsCarousel(articles, carouselItemStart);
 })
 
-/* Domaci ukol cislo 1
+// Domaci ukol cislo 1
 const mainContent = document.querySelector('.main-content')
 
 const daysNumber = 31;
@@ -66,11 +65,6 @@ for(let i = daysStart; i <= daysNumber; i ++) {
     divForDay.classList.add('main-content__day');
     mainContent.appendChild(divForDay);
     divForDay.innerText = i;
-}*/
-
-const sectionContent = document.querySelector('section.main-content');
-for (let i = 0; i < 30; i++) {
-    sectionContent.appendChild(new NewDay(i));
 }
 
 
