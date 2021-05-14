@@ -1,3 +1,5 @@
+import { NewsArticle } from '../news-article/news-article.js';
+
 export class Carousel {
     constructor() {
         this.header = document.querySelector('header.header-news > div.header-news__container');
@@ -21,8 +23,9 @@ export class Carousel {
         this.header.innerText = '';
         for(let i = this.carouselItemStart; i < this.carouselItemStart + this.carouselItemCount; i ++) {
             const newsValue = news[i];
-            const newsArticle = new NewsArticle(newsValue);
-            this.header.appendChild(newsArticle);
+            const newsArticle = new NewsArticle();
+            const newsDiv = newsArticle.createDivForNews(newsValue);
+            this.header.appendChild(newsDiv);
         }
         this.checkButtonsVisibility(); 
       }
