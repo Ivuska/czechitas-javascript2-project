@@ -1,4 +1,3 @@
-import { NewsArticle } from './components/news-article/news-article.js';
 import { Carousel } from './components/carousel/carousel.js';
 
 const carousel = new Carousel;
