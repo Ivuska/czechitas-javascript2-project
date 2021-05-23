@@ -1,13 +1,11 @@
-import { NewsArticle } from './components/news-article/news-article.js';
 import { Carousel } from './components/carousel/carousel.js';
 import { NewDay } from './components/day/day.js';
-
-const carousel = new Carousel;
 
 fetch('http://localhost:3000/news.json')
     .then(serverResponse => serverResponse.text())
     .then(responseText => {
         const data = JSON.parse(responseText);
+        const carousel = document.querySelector('app-carousel');
         carousel.populateNewsCarousel(data.articles);
     })
 
